@@ -1,0 +1,74 @@
+.pcs Format:
+
+A .pcs file represents a set of pieces, with each line representing a different piece.
+Each piece is required to have a name (in the name area) and a full standard area (even if it's just full of 0s!)
+For more specialized behaviour, the standard area can be followed by a /, and then followed with an override state.
+This override state is simply an actual game logic state written out, which will be forced on the piece when spawned.
+Since it's the exact same format as the in-game logic states, some areas are unused in .pcs, but for ease of processing, all
+parts are required to be filled in some way (even if all 0s, indicating default state) if the override is used
+
+nnnnn: MCCSSZZDDDDDDDDD...DDD/XXXYYYRRVOO
+
+-NAME AREA-
+nnnn: Piece name (can be any length)
+
+-STANDARD AREA-
+M: Mode Switch
+    0 - Default Mode
+    1 - Colored Mode (Changes Data section to parse values 0-9 then a-z to specify block-by-block color/texture)
+CC: Piece Color/Texture (default mode)
+    0 - Blank
+    1 - Red 
+    2 - Green 
+    3 - Blue 
+    4 - Yellow 
+    5 - Purple 
+    6 - Cyan 
+    7 - Orange 
+SS - Number of unique rotation states (Almost always 1, 2, or 4)
+ZZ - Width/Height of Bounding Square (Only one number since it's a square)
+DDDD... - Data section, contains piece data (varies in length according to state count and size)
+
+-OVERRIDE AREA (NOT required)-
+XXX: Spawn X-coordinate
+YYY: Spawn Y-coordinate
+RR: Spawn rotation state
+V: Mode override (irrelvant for .pcs; should always be 0)
+OO: Color override (irrelevant for .pcs; should always be 00)
+
+
+given x, y, r (rotation state) coordinates, all starting at 0:
+always: add 7 (due to header at start of string)
+for each x: add 1
+for each y: add piece.size
+for each r: add piece.size * piece.size
+
+size of "piece" in data: 8 + (SS * ZZ * ZZ)
+size of "state" in data: 11
+
+mode m = data[0]
+color c = data[1..2]
+states s = data[3..4]
+size z = data[5..6]
+matrix m = data[7..(states * size * size)]
+
+x = state[0..2]
+y = state[3..5]
+r = state[6..7]
+mode-override v = state[8]
+color-override o = state[9..10]
+
+spawn x = 5 - (ZZ/2) + (ZZ%2)
+note: integer division in C returns the integer part of the division result (e.g. 3/2 = 1), hence the +(ZZ%2)
+
+
+
+ char* test = "00604040000111100000000001000100010001000000000111100000100010001000100";
+    char get[3];
+    memset(get, '\0', sizeof(get));
+    char* ptr;
+    strncpy(get, test + 5, 2);
+    int end = (int)strtol(get, &ptr, 10);
+    printf("%i\n",end);
+
+//prints "4"
