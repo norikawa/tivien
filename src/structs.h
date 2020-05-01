@@ -2,19 +2,38 @@
 #define tivien_structs_h
 
 typedef struct {
-    char* name, matrix;
-    int x, y, r, color, state, size, mode;
+    //char* name;
+    char* matrix;
+    int* data;
+    int* state;
 } Piece;
 
 typedef struct {
-    Piece* pieces;
-    int size, max;
+    //char* name;
+    char* data;
+    char* state;
+    int* sequence; //The integers here represent the index value of the start of each piece
 } Bag;
 
 typedef struct {
+    //char* name;
+    char* data;
+    char* state;
+} Playfield;
+
+typedef struct {
+    char* name;
+    char* data;
+} Ruleset;
+
+typedef struct {
+    Piece current;
+    Piece hold;
     Bag bag;
-    Piece current, hold;
-    //Playfield playfield;
+    Playfield playfield;
+    Ruleset ruleset;
+    char* name;
+    char* state;
 } Game;
 
 #endif
