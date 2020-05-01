@@ -1,5 +1,15 @@
-//TODO: 
-//[Possibly Unneeded Now] merge_int_arr
+//Project-wide TODO:
+//Bag processing
+//Playfield processing
+//Ruleset processing
+//File handling
+//Sound 
+//Graphics
+//Player Input
+//Scoring??
+//Timing??
+//Game setup in general
+//INI Parser (likely)
 
 #include "string.h"
 #include "util.h"

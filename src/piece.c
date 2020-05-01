@@ -1,5 +1,7 @@
 #include "piece.h"
 
+//TODO: Add rotation functions to piece.h
+
 //Given the piece data and piece name, sets the relevant data for the given piece object
 void build_piece(Piece* piece, char* data_str) {
     //piece->name = name;
@@ -122,4 +124,20 @@ int get_cell(Piece* piece, int x, int y, int r) {
     int cell_index = (size * size * r) + (size * y) + x;
     char output = piece->matrix[cell_index] - '0';
     return (int)output;
+}
+
+void rotate_piece_cw(Piece* piece) {
+    if(get_r(piece) >= get_s(piece) - 1) {
+        set_r(piece, 0);
+    } else {
+        inc_r(piece);
+    }
+}
+
+void rotate_piece_ccw(Piece* piece) {
+    if(get_r(piece) <= 0) {
+        set_r(piece, get_s(piece) - 1);
+    } else {
+        dec_r(piece);
+    }
 }
