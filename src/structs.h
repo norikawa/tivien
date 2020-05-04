@@ -11,7 +11,7 @@ typedef struct {
 typedef struct {
     //char* name;
     char* data;
-    char* state;
+    int index;
     int* sequence; //The integers here represent the index value of the start of each piece
 } Bag;
 

@@ -1,0 +1,17 @@
+MSSDDD...DD/IIQqQqQq
+
+M - Mode
+SS - Size 
+DDD...DD - Piece
+II - Index
+QqQqQq - Sequence
+
+0 03 0070403001111000010010011000111100110010010 0050403010111000010011010000111010010110010 00401021111
+
+start @ 3
+get_substring[6..7] = states
+get_substring[8..9] = size
+
+
+
+3 A B

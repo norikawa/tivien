@@ -7,34 +7,34 @@
 
 void build_piece(Piece* piece, char* data_str);
 
-int get_x(Piece* piece);
-int get_y(Piece* piece);
-int get_r(Piece* piece);
-int get_v(Piece* piece);
-int get_o(Piece* piece);
-int get_m(Piece* piece);
-int get_c(Piece* piece);
-int get_s(Piece* piece);
-int get_z(Piece* piece);
+int get_piece_x(Piece* piece);
+int get_piece_y(Piece* piece);
+int get_piece_r(Piece* piece);
+int get_piece_v(Piece* piece);
+int get_piece_o(Piece* piece);
+int get_piece_m(Piece* piece);
+int get_piece_c(Piece* piece);
+int get_piece_s(Piece* piece);
+int get_piece_z(Piece* piece);
 
-void set_x(Piece* piece, int input);
-void set_y(Piece* piece, int input);
-void set_r(Piece* piece, int input);
-void set_v(Piece* piece, int input);
-void set_o(Piece* piece, int input);
-void set_m(Piece* piece, int input);
-void set_c(Piece* piece, int input);
-void set_s(Piece* piece, int input);
-void set_z(Piece* piece, int input);
+void set_piece_x(Piece* piece, int input);
+void set_piece_y(Piece* piece, int input);
+void set_piece_r(Piece* piece, int input);
+void set_piece_v(Piece* piece, int input);
+void set_piece_o(Piece* piece, int input);
+void set_piece_m(Piece* piece, int input);
+void set_piece_c(Piece* piece, int input);
+void set_piece_s(Piece* piece, int input);
+void set_piece_z(Piece* piece, int input);
 
-void inc_x(Piece* piece);
-void inc_y(Piece* piece);
-void inc_r(Piece* piece);
+void inc_piece_x(Piece* piece);
+void inc_piece_y(Piece* piece);
+void inc_piece_r(Piece* piece);
 
-void dec_x(Piece* piece);
-void dec_y(Piece* piece);
-void dec_r(Piece* piece);
+void dec_piece_x(Piece* piece);
+void dec_piece_y(Piece* piece);
+void dec_piece_r(Piece* piece);
 
-int get_cell(Piece* piece, int x, int y, int r)
+int get_piece_cell(Piece* piece, int x, int y, int r);
 
 #endif

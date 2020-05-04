@@ -31,7 +31,6 @@ void add_char(char* string, char addition) {
     strncpy(string, holder, new_size);
 }
 
-
 //Returns an array of the values string[low] to string[high]
 char* get_substring(char* string, int low, int high) {
     size_t output_size = CHAR_SIZE * (high - low + 1);
