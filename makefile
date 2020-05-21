@@ -10,7 +10,7 @@ vpath %.c $(SEARCHPATH)
 vpath %.h $(SEARCHPATH)
 
 _OBJS += main.o
-_OBJS += piece.o string.o util.o bag.o
+_OBJS += piece.o string.o util.o bag.o playfield.o
 
 OBJS = $(patsubst %,$(OUT)/%,$(_OBJS))
 

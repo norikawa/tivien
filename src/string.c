@@ -1,5 +1,7 @@
 #include "string.h"
 
+//TODO: char_to_int (cf. playfield.c::build_playfield), int_to_char (cf. playfield.c::set_playfield_pos)
+
 //Takes a string as input, and converts it into the int it represents
 //Only functions if all characters in the input are 0-9
 int str_to_int(char* input) {
@@ -31,7 +33,7 @@ void add_char(char* string, char addition) {
     strncpy(string, holder, new_size);
 }
 
-//Returns an array of the values string[low] to string[high]
+//Returns an array of the chars string[low] to string[high]
 char* get_substring(char* string, int low, int high) {
     size_t output_size = CHAR_SIZE * (high - low + 1);
     char* output = malloc(output_size);

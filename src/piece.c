@@ -1,9 +1,22 @@
 #include "piece.h"
 
+//Piece Data Values
+//m : Mode Switch
+//c : Color/Texture
+//s : Rotation States Count
+//z : Bounding Box Size
+
+//Piece State Values
+//x : x-position
+//y : y-position
+//r : Current Rotation State
+//v : Mode Override
+//o : Color/Texture Override
+
 //TODO: Add rotation functions to piece.h
 
 //Given the piece data and piece name, sets the relevant data for the given piece object
-void build_piece(Piece* piece, char* data_str) {
+void build_piece(Piece* piece, char* input) {
     //piece->name = name;
     int parsed_data[4];
     for(int data_index = 0; data_index <= 3; data_index++) {
@@ -12,15 +25,16 @@ void build_piece(Piece* piece, char* data_str) {
         if(range_start < 0) {
             range_start = 0;
         }
-        insert_int(parsed_data, substring_to_int(data_str, range_start, range_end), data_index);
+        insert_int(parsed_data, substring_to_int(input, range_start, range_end), data_index);
     }
     piece->data = parsed_data;
     size_t matrix_letters = piece->data[2] * piece->data[3] * piece->data[3];
     size_t matrix_size = matrix_letters * CHAR_SIZE;
     piece->matrix = malloc(matrix_size);
     memset(piece->matrix, '\0', matrix_size);
+    //TODO: Fix this for loop's existence. This should probably be a call to strncpy() or similar
     for(int current_position = 0; current_position < matrix_letters; current_position++) {
-        piece->matrix[current_position] = data_str[7 + current_position];
+        piece->matrix[current_position] = input[7 + current_position];
     }
 }
 
