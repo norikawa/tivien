@@ -27,15 +27,20 @@ void build_piece(Piece* piece, char* input) {
         }
         insert_int(parsed_data, substring_to_int(input, range_start, range_end), data_index);
     }
-    piece->data = parsed_data;
-    size_t matrix_letters = piece->data[2] * piece->data[3] * piece->data[3];
+    piece->data = malloc(sizeof(int) * 4);
+    piece->data[0] = parsed_data[0];
+    piece->data[1] = parsed_data[1];
+    piece->data[2] = parsed_data[2];
+    piece->data[3] = parsed_data[3];
+    size_t matrix_letters = strlen(input) - 7;
     size_t matrix_size = matrix_letters * CHAR_SIZE;
     piece->matrix = malloc(matrix_size);
     memset(piece->matrix, '\0', matrix_size);
-    //TODO: Fix this for loop's existence. This should probably be a call to strncpy() or similar
-    for(int current_position = 0; current_position < matrix_letters; current_position++) {
-        piece->matrix[current_position] = input[7 + current_position];
-    }
+    strncpy(piece->matrix, get_substring(input, 7, strlen(input) - 1), matrix_size);
+    //TODO: Fix this "for" loop's existence. This should probably be a call to strncpy() or similar
+    /*for(int current_position = 7; current_position < matrix_letters; current_position++) {
+        piece->matrix[current_position] = input[current_position];
+    }*/
 }
 
 int get_piece_x(Piece* piece) {
@@ -137,7 +142,7 @@ int get_piece_cell(Piece* piece, int x, int y, int r) {
     int size = get_piece_z(piece);
     int cell_index = (size * size * r) + (size * y) + x;
     char output = piece->matrix[cell_index] - '0';
-    return (int)output;
+    return output;
 }
 
 void rotate_piece_cw(Piece* piece) {

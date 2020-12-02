@@ -6,15 +6,15 @@
 //h : Height 
 
 int get_playfield_m(Playfield* playfield) {
-    return playfield->data[0];
+    return playfield->data[PLAYFIELD_M];
 }
 
 int get_playfield_w(Playfield* playfield) {
-    return playfield->data[1];
+    return playfield->data[PLAYFIELD_W];
 }
 
 int get_playfield_h(Playfield* playfield) {
-    return playfield->data[2];
+    return playfield->data[PLAYFIELD_H];
 }
 
 int get_playfield_cell(Playfield* playfield, int x, int y) {
@@ -36,9 +36,9 @@ void set_playfield_cell(Playfield* playfield, int x, int y, int input) {
 void build_playfield(Playfield* playfield, char* input) {
     //TODO: Would be better with a "char_to_int" function instead
     //ADD: Actually... would it?
-    playfield->data[0] = substring_to_int(input, 0, 0);
-    playfield->data[1] = substring_to_int(input, 1, 3);
-    playfield->data[2] = substring_to_int(input, 4, 6);
+    playfield->data[PLAYFIELD_M] = substring_to_int(input, 0, 0);
+    playfield->data[PLAYFIELD_W] = substring_to_int(input, 1, 3);
+    playfield->data[PLAYFIELD_H] = substring_to_int(input, 4, 6);
     int playfield_size = CHAR_SIZE * get_playfield_w(playfield) * get_playfield_h(playfield);
     playfield->state = malloc(playfield_size);
     memset(playfield->state, '\0', playfield_size);

@@ -7,7 +7,7 @@
 #include <limits.h>
 #include <time.h>
 
-#include "structs.h"
+//#include "structs.h"
 #include "defines.h"
 
 #endif

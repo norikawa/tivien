@@ -4,6 +4,12 @@
 #include "string.h"
 #include "common.h"
 
+typedef struct {
+    //char* name;
+    int* data;
+    char* state;
+} Playfield;
+
 int get_playfield_m(Playfield* playfield);
 int get_playfield_w(Playfield* playfield);
 int get_playfield_h(Playfield* playfield);

@@ -5,6 +5,15 @@
 #include "util.h"
 #include "string.h"
 
+typedef struct {
+    //char* name;
+    //Data: Does *not* change; Is required for building an item
+    //State: *Does* change; Is not required for building an item
+    char* matrix;
+    int* data;
+    int* state;
+} Piece;
+
 void build_piece(Piece* piece, char* data_str);
 
 int get_piece_x(Piece* piece);
@@ -36,5 +45,7 @@ void dec_piece_y(Piece* piece);
 void dec_piece_r(Piece* piece);
 
 int get_piece_cell(Piece* piece, int x, int y, int r);
+
+void rotate_piece_cw(Piece* piece);
 
 #endif
